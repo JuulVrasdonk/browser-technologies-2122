@@ -1,0 +1,21 @@
+<%- include('./partials/head.ejs') %>
+<body>
+<header>
+    <a href="/index"></a>
+</header>
+<main>
+    <section>
+        <h2><%= speelDag %> </h2>
+        <p><%= speelTijd %></p>
+        <article>
+            <h3><%= thuisNaam %></h3>
+            <strong><%= thuisScore %></strong>
+        </article>
+        <article>
+            <h3><%= uitNaam %></h3>
+            <strong><%= uitScore %></strong>
+        </article>
+    </section>
+</main>
+</body>
+<%- include('./partials/footer.ejs') %>

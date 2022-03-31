@@ -1,2 +1,2 @@
-.DS_Store
-/nogniet/*
+node_modules
+.env
