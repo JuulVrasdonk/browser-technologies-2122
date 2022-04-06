@@ -4,8 +4,13 @@
     <h1>Houdt de scores bij van je favoriete team.</h1>
 </header>
 <main>
-    <h1><%= speelDag %></h1>
-    <ul></ul>
+    <ul>
+        <% if(matchData) {%>
+            <li>matchData loaded</li>
+        <% }  else{%> 
+            <li>no matchData</li>
+        <% } %> 
+    </ul>
 </main>
 </body>
 <%- include('./partials/footer.ejs') %>

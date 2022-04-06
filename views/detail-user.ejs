@@ -1,19 +1,19 @@
 <%- include('./partials/head.ejs') %>
 <body>
 <header>
-    <a href="/index"></a>
+    <a href="/user/index">terug</a>
 </header>
 <main>
     <section>
-        <h2><%= speelDag %> </h2>
-        <p><%= speelTijd %></p>
+        <h2><%= matchData ? matchData.speeldag : '01-01-2022'%> </h2>
+        <p><%= matchData ? matchData.speeltijd : '00:00' %></p>
         <article>
-            <h3><%= thuisNaam %></h3>
-            <strong><%= thuisScore %></strong>
+            <h3><%= matchData ? matchData.thuisnaam : 'Thuis' %></h3>
+            <strong><%= matchData ? matchData.thuisscore : 0 %></strong>
         </article>
         <article>
-            <h3><%= uitNaam %></h3>
-            <strong><%= uitScore %></strong>
+            <h3><%= matchData ? matchData.uitnaam : 'Uit' %></h3>
+            <strong><%= matchData ? matchData.uitscore : 0 %></strong>
         </article>
     </section>
 </main>

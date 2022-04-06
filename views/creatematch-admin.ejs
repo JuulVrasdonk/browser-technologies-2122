@@ -5,12 +5,12 @@
 </header>
 <main>
     <form action="/admin/creatematch" method="post">
-        <input type="date" name="speeldag">
-        <input type="time" name="speeltijd">
-        <input type="number" name="thuisscore" value="0">
-        <input type="number" name="uitscore" value="0">
-        <input type="text" name="thuisnaam" placeholder="thuis">
-        <input type="text" name="uitnaam" placeholder="uit">
+        <input type="date" name="speeldag" value="<%= matchData.speeldag %>">
+        <input type="time" name="speeltijd" value="<%= matchData.speeltijd %>">
+        <input type="number" name="thuisscore" value="<%= matchData.thuisscore %>">
+        <input type="number" name="uitscore" value="<%= matchData.uitscore %>">
+        <input type="text" name="thuisnaam" placeholder="thuis" value="<%= matchData.thuisnaam %>">
+        <input type="text" name="uitnaam" placeholder="uit" value="<%= matchData.uitnaam %>">
         <input type="submit" value="verstuur score">
     </form>
 </main>
