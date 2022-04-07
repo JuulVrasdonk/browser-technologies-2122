@@ -1,13 +1,39 @@
 <%- include('./partials/head.ejs') %>
 <body class="index-admin">
     <header>
-        <h1>Houdt de scores bij van je favoriete team.</h1>
+        <div>
+            <h1>Houdt scores <span>van je favoriete team</span> bij.</h1>
+            <form action="/admin" method="post">
+                <div>
+                    <input type="number" name="newScore" value="0" max="99">
+                    <input type="text" name="newMatch" placeholder="thuis" required>
+                </div>
+                <p>VS</p>
+                <div>
+                    <input type="number" name="newScore" value="0" max="99">
+                    <input type="text" name="newMatch" placeholder="uit" required>
+                </div>
+                <button type="submit"> voeg wedstrijd toe </button>
+            </form>
+        </div>
     </header>
     <main>
-        <ul>
-            <li><p>Je hebt nog geen wedstrijden aangemaakt.</p></li>
-        </ul>
-        <a href="/admin/creatematch">voeg wedstrijd toe</a>
+            <ul>
+                <% newData.forEach(item => { %>
+                    <li>
+                        <a href="match/<%=item.id%>">
+                            <p><%=item.match[0]%></p>
+                            <strong><%= item.score[0] %></strong>
+                            <p>VS</p>
+                            <strong><%= item.score[1] %></strong>
+                            <p><%=item.match[1]%></p>
+                        </a>
+                    </li>
+                <% }) %>
+                <% if(newData.length == 0) {%> 
+                <li><p class="zerostate">Je hebt nog geen wedstrijden aangemaakt.</p></li>
+                <% } %>
+            </ul>
     </main>
 </body>
 <%- include('./partials/footer.ejs') %>

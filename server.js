@@ -32,31 +32,101 @@ let matchData
 
 // Maak een route voor de index
 app.get('/admin', function (req, res) {
+    const data = fs.readFileSync('data.json', 'utf8');
+    const newData = JSON.parse(data)
+    console.log(newData);
     res.render('index-admin', {
-        pageTitle: "Score! - admin"
+        pageTitle: "Score! - admin",
+        newData
     })
 })
 
 
-app.post('/admin/creatematch', function (req, res) {
-    matchData = req.body
+app.post('/admin', function (req, res) {
+    console.log(req.body);
+    let newMatch = req.body.newMatch
+    let newScore = req.body.newScore
+    let match;
+
+    let matches = [];
+    const game = ({
+        match: newMatch,
+        score: newScore,
+        id: uuidv4()
+    })
+    const matchesStr = fs.readFileSync('data.json', 'utf8');
+    matches = JSON.parse(matchesStr)
+
+    const duplicateMatches = matches.filter((game) => game.match === match);
+
+    if (duplicateMatches.length === 0) {
+        matches.push(game);
+        fs.writeFileSync('data.json', JSON.stringify(matches, null, 4))
+    }
+    res.redirect('/admin')
+})
+
+app.get('/admin', function (req, res) {
+    const data = fs.readFileSync('data.json', 'utf8');
+    const newData = JSON.parse(data)
+    console.log(newData);
     res.render('creatematch-admin', {
-        pageTitle: "Create match",
-        matchData : matchData
+        newData,
+        pageTitle: 'Create match',
+    });
+})
+
+app.get('/match/:id', (req, res) => {
+    let {
+        id
+    } = req.params;
+    let newItem = []
+
+
+    const data = fs.readFileSync('data.json', 'utf8');
+    const newData = JSON.parse(data);
+
+    for (let index = 0; index < newData.length; index++) {
+        newItem = newData.find(item => item.id === id);
+    }
+
+    res.render('updatescore-admin', {
+        pageTitle: 'Testing',
+        newItem: newItem
     })
 })
 
-app.get('/admin/creatematch', function (req, res) {
-    res.render('creatematch-admin', {
-        pageTitle: "Create match", 
-        matchData: () => {if(matchData) {matchData}},
-    })
+
+app.put('/match/:id', (req, res) => {
+    let {
+        id
+    } = req.params;
+    let updateData = []
+
+    const data = fs.readFileSync('data.json', 'utf8');
+    const newData = JSON.parse(data);
+
+    updateData = newData;
+    const foundIndex = updateData.findIndex(x => x.id == id);
+    updateData[foundIndex].match = req.body.newMatch;
+    updateData[foundIndex].score = req.body.newScore;
+
+    fs.writeFileSync('data.json', JSON.stringify(updateData, null, 4))
+    console.log(id);
+
+    res.redirect(`/match/${id}`)
 })
+
+
+
+// ************* USER ************* //
 
 app.get('/user/index', function (req, res) {
+    const data = fs.readFileSync('data.json', 'utf8');
+    const newData = JSON.parse(data)
     res.render('index-user', {
         pageTitle: "User!",
-        matchData : matchData
+        newData
     })
 })
 
