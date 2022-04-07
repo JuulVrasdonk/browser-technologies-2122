@@ -5,7 +5,7 @@ https://scoreboard-bt.herokuapp.com/admin
 
 ## Wireflow schets (start van het project)
 
-(https://github.com/JuulVrasdonk/browser-technologies-2122/blob/main/public/assets/readme-assets/wireflow-schets.jpeg)
+![alt text](https://github.com/JuulVrasdonk/browser-technologies-2122/blob/main/public/assets/readme-assets/wireflow-schets.jpeg)
 ### Core functionality
 De core functionality is het makkelijk bijhouden en bekijken van verschillende scores voor verschillende wedstrijden. 
 Voor mij behoort het toevoegen van comments tot de pleasurable laag. Ik vind niet dat een gebruiker koste wat kost een comment hoeft
