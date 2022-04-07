@@ -17,7 +17,9 @@
 
 button {
     pointer-events: auto;
+    box-sizing: border-box;
 }
+
 .index-admin {
     height: 100vw;
     overflow: hidden;
@@ -312,6 +314,35 @@ button {
 }
 
 
+input[type="number"] {
+    animation: scoreFadeIn 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) forwards;
+}
+
+.newmatch {
+    animation: fadeIn 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) forwards;
+}
+
+
+@keyframes scoreFadeIn {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    } to {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    } to {
+        opacity: 1;
+    }
+}
+
+
+
 @media only screen and (min-width: 1024px) { 
     .index-admin {
         display: flex;
@@ -363,6 +394,10 @@ button {
         height: 100%;
         width: 30vw;
         padding-top: 38px;
+    }
+
+    .index-admin ul li {
+        margin-bottom: 12px;
     }
 
     .updatescore form div {
