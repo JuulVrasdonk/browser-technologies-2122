@@ -8,12 +8,12 @@
     <form action="/match/<%=newItem.id%>" method="POST" enctype="application/x-www-form-urlencoded" id="update">
         <input type="hidden" name="_method" value="PUT">
         <div>
-            <input type="text" name="newMatch" value="<%=newItem.match[0]%>">
+            <input type="text" name="newMatch" value="<%=newItem.match[0]%>" maxlength="20">
             <input type="number" name="newScore" value="<%=newItem.score[0]%>" required max="99" />
         </div>
         <p>VS</p>
         <div>
-            <input type="text" name="newMatch" placeholder="0" value="<%=newItem.match[1]%>">
+            <input type="text" name="newMatch" placeholder="0" value="<%=newItem.match[1]%>" maxlength="20">
             <input type="number" name="newScore" placeholder="0" value="<%=newItem.score[1]%>" required max="99" />
         </div>
         <div>
